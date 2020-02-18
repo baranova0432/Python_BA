@@ -1,0 +1,93 @@
+#tsk1
+
+a=int(input())
+m=[]
+for i in range(a):
+    j=0
+    while j<i+1:
+        m.append(i+1)
+        j+=1
+    if len(m)>a: break
+m=m[0:a]
+for i in m:
+    print(i, end=" ")
+#tsk2
+print("введите строку")
+lst=(input().split())
+x=int(input("искомое число"+'\n'))
+for i in range(len(lst)):
+       if x==int(lst[i]):
+        print(i,end=" ")
+#tsk3
+col_l=0
+row_l=1
+md=""
+arr=[]
+a0,b0,an,bn=0,0,0,0
+while row_l>0: 
+    md=input().split() 
+    if "end" in md:
+        row_l-=1
+        break 
+    else:
+        if row_l==1:
+            col_l=len(md)
+        row_l+=1 
+        arr.append(md) 
+arr_sum = [[0 for j in range(col_l)] for i in range(row_l)]
+for i in range(len(arr)):
+    for j in range(len(arr[i])):
+        if i-1<0: a0=row_l-1
+        else: a0=i-1
+        if j-1<0: b0=col_l-1
+        else: b0=j-1
+        if i+1>row_l-1: an=0
+        else: an=i+1
+        if j+1>col_l-1: bn=0
+        else: bn=j+1
+        arr_sum[i][j]= int(arr[a0][j])+int(arr[an][j])+int(arr[i][b0])+int(arr[i][bn])
+for row in arr_sum:
+    for elem in row:
+        print(elem, end=' ')
+    print()
+#tsk4
+n = int(input())
+i, j = 0, -1
+maxj, maxi = n - 1, n - 1
+minj, mini = 0, 1
+count = 1
+m = [[0 for j in range(n)] for i in range(n)]
+while True:
+
+    while j < maxj:
+        j += 1
+        m[i][j] = count
+        count += 1
+    maxj -= 1
+    while i < maxi:
+        i += 1
+        m[i][j] = count
+        count += 1
+    maxi -= 1
+    while j > minj:
+        j -= 1
+        m[i][j] = count
+        count += 1
+    minj += 1
+    while i > mini:
+        i -= 1
+        m[i][j] = count
+        count += 1
+    mini += 1
+
+    if j == (n - 1) // 2 and i == n // 2:
+        break
+
+print()
+print()
+for i in range(n):
+    for j in range(n):
+        print(m[i][j], end='\t')
+    print()
+    print()
+input()
