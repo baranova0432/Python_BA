@@ -1,0 +1,36 @@
+#1
+class itergen:
+    def __iter__(self):
+        k=[0,1,1]
+        n=3
+        print(k[0])
+        print(k[1])
+        print(k[2])
+        while(n<35):
+            k[0],k[1],k[2]=k[1],k[2],k[0]+k[1]+k[2]
+            n+=1
+            yield k[2]
+
+x=itergen()
+for i in x:
+    print(i)
+    
+#2
+class leib:
+    def __iter__(self):
+        k=0
+        l=1
+        n=0
+        print(k)
+        while(round(k,2)!=0.78):
+            if(n%2==0):
+               k+=1/l
+            else:
+               k-=1/l
+            l+=2
+            n+=1
+            yield k
+
+x=leib()
+for i in x:
+    print(i)
